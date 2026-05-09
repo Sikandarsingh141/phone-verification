@@ -47,9 +47,9 @@ const otpLimiter = rateLimit({
 app.use("/api/verify/send-otp", otpLimiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "frontend")));
+app.use(express.static(path.join(__dirname, "docs")));
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "index.html"));
+  res.sendFile(path.join(__dirname, "docs", "index.html"));
 });
 
 app.use("/api/auth", authRoutes);
