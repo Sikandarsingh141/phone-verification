@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phone Verify</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css"></link>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Phone Verify</h1>
+    <p>Log in first, then enter your phone number, and finally verify the code.</p>
+  </header>
+
+
+  <div class="card active" id="view-auth">
+    <div class="card-title" id="authTitle">Log In</div>
+
+    <div class="field" id="fieldName" style="display:none;">
+      <label>Name</label>
+      <input id="authName" type="text" placeholder="John Doe" />
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <input id="authEmail" type="email" placeholder="john@example.com" />
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input id="authPassword" type="password" placeholder="••••••••" />
+    </div>
+
+    <div class="button-row">
+      <button class="btn btn-primary" id="btnAuth" onclick="doAuth()">Log In</button>
+      <button class="btn btn-secondary" id="btnToggle" onclick="toggleAuthMode()">Create account</button>
+    </div>
+
+    <div id="msg-auth" class="msg"></div>
+  </div>
+
+  <div class="card" id="view-phone">
+    <div class="card-title">Phone Number</div>
+    <div class="field">
+      <label>Phone Number</label>
+      <input id="phoneInput" type="tel" placeholder="+919876543210" />
+    </div>
+    <button class="btn btn-primary" id="btnSendOTP" onclick="doSendOTP()">Send OTP</button>
+    <div id="msg-send" class="msg"></div>
+  </div>
+
+  <div class="card" id="view-verify">
+    <div class="card-title">Enter Verification Code</div>
+    <p>Type the 6-digit code sent to your phone.</p>
+    <div class="otp-wrapper" id="otpWrapper">
+      <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" />
+      <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" />
+      <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" />
+      <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" />
+      <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" />
+      <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" />
+    </div>
+    <div class="button-row">
+      <button class="btn btn-primary" id="btnVerify" onclick="doVerifyOTP()">Verify Code</button>
+      <button class="btn btn-secondary" onclick="doResend()">Resend Code</button>
+    </div>
+    <div id="msg-verify" class="msg"></div>
+  </div>
+
+  <div class="card" id="view-success">
+    <div class="success-screen">
+      <div class="check-ring">✓</div>
+      <h2>Verified</h2>
+      <p id="successNote" class="success-note">Your phone number is verified.</p>
+      <button class="btn btn-secondary" onclick="resetFlow()">Start Over</button>
+    </div>
+  </div>
+
+</div>
+<script src="index.js"></script>
+</body>
+</html>
