@@ -38,7 +38,7 @@ const limiter = rateLimit({
 app.use("/api", limiter);
 const otpLimiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 minutes
-  max: 50,               
+  max: 5,               
   message: {
     success: false,
     message: "Too many OTP requests. Please wait 10 minutes.",
